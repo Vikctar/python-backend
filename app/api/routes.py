@@ -19,6 +19,11 @@ def demo():
 @other_responses({201: 'Created', 403: 'Forbidden'})
 @limiter.limit("4/second", override_defaults=False)
 def record_trip(kwargs):
+    """
+    Records trip details
+    :param kwargs: trip details payload
+    :return:
+    """
     api_token = request.args.get('api_token')
     if not api_token and not isinstance(api_token, str):
         abort(403)

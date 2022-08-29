@@ -1,3 +1,6 @@
+"""
+This api provides an endpoint that logs trip details
+"""
 import json
 
 from apifairy import APIFairy
