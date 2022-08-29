@@ -1,8 +1,11 @@
+import json
+
 from apifairy import APIFairy
 from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.exceptions import HTTPException
 
 from config import config
 
@@ -23,6 +26,7 @@ def create_app(config_class='default'):
 
     initialize_extensions(app)
     register_blueprints(app)
+    register_error_handlers(app)
 
     return app
 
@@ -38,3 +42,21 @@ def register_blueprints(app):
     from app.api import api
 
     app.register_blueprint(api)
+
+
+def register_error_handlers(app):
+    @app.errorhandler(HTTPException)
+    def handle_http_exception(e):
+        """Return JSON instead of HTML for HTTP errors"""
+        # Start with the correct headers and status code from the error
+        response = e.get_response()
+        # Replaces the body with JSON
+        response.data = json.dumps({
+            'code': e.code,
+            'name': e.name,
+            'description': e.description
+        })
+        response.content_type = 'application/json'
+        return response
+
+from app import models, schemas
