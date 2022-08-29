@@ -21,7 +21,7 @@ class ApiTestCase(BaseTest):
         self.assertEqual(response.status_code, 200)
 
     def test_record_trip(self):
-        response = self.client().post('/api/v1/record-trip', json=self.new_trip)
+        response = self.client().post('/api/v1/record-trip?api_token=some-token', json=self.new_trip)
         self.assertEqual(response.status_code, 201)
 
 
