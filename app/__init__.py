@@ -6,6 +6,8 @@ from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 from config import config
 
@@ -13,6 +15,7 @@ apifairy = APIFairy()
 db = SQLAlchemy()
 ma = Marshmallow()
 migrate = Migrate()
+limiter = Limiter(key_func=get_remote_address)
 
 
 def create_app(config_class='default'):
@@ -36,6 +39,7 @@ def initialize_extensions(app):
     db.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
+    limiter.init_app(app)
 
 
 def register_blueprints(app):
