@@ -23,10 +23,13 @@ $ git clone git@github.com:Vikctar/python-backend.git
 ```                                                              
 $ python3 -m venv env                                            
  ```                                                              
-* Install dependencies with *pip*
+* Install dependencies with *pip* by running the following commands in succession
 ```                                                              
 $ source env/bin/activate                                        
-```                                                              
+```
+```
+$ pip install -U pip
+```
 ```                                                              
 $ pip install -r requirements.txt                            
 ```                                                              
