@@ -61,7 +61,7 @@ To run the app using docker, requires two docker images to be built. A flask ima
 $ docker pull mysql
  ```
 
-* Run a container from the mysql image providing an envfile that contains the following content
+* Run a container from the mysql image providing an envfile that contains the following content. Name the file .env-db
 
  ```dotenv
 MYSQL_ROOT_PASSWORD='my-password'
@@ -83,7 +83,7 @@ $ docker build -t myapp .
 ```
 $ docker run --name python-backend -d -p 8080:5000 --rm --env-file=.env --link dbserver myapp:latest
 ```
-
+* Access the app locally on port 8080
 
 ## API Reference
 External API reference can be found at {{base_url}}/docs

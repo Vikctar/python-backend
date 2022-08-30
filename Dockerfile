@@ -9,7 +9,7 @@ RUN pip install -r requirements.txt
 
 COPY app app
 COPY migrations migrations
-COPY app.py config.py boot.sh ./
+COPY run.py config.py boot.sh ./
 
 EXPOSE 5000
 CMD ./boot.sh
