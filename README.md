@@ -101,7 +101,7 @@ Endpoints
     * Returns a message on successful transaction or an error
 
   
-* Sample `curl -X POST https://{{base_url}}/auth/register -H "Content-Type: application/json" -d {"vehicle_id": 1, "driver_id": 1, "customer_id": 1, "address_type": "PICKUP_POINT", "done_by_user_id": 1, "address": "Mombasa", "cargo_tonnage": 1000.00}`
+* Sample `curl -X POST http://{{base_url}}/api/v1/record-trip?api_token=some-token -H "Content-Type: application/json" -d '{"vehicle_id": 1, "driver_id": 1, "customer_id": 1, "address_type": "PICKUP_POINT", "done_by_user_id": 1, "address": "Mombasa", "cargo_tonnage": 1000.00}'`
 
   ```
   {
